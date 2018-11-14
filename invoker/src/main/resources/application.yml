@@ -1,0 +1,6 @@
+server:
+  port: 8080
+
+producer:
+  base:
+    url: http://localhost:9090

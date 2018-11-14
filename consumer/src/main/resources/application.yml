@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        persons:
+          destination: persons.topic
+          contentType: application/json
+          group: consumer

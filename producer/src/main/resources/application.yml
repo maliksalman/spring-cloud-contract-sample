@@ -1,0 +1,10 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        persons:
+          destination: persons.topic
+          contentType: application/json
