@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class EventListener {
 
     private Messaging messaging;
-    private EventPersister persister;
+    private EventPersistor persister;
 
-    public EventListener(Messaging messaging, EventPersister persister) {
+    public EventListener(Messaging messaging, EventPersistor persister) {
         this.messaging = messaging;
         this.persister = persister;
     }

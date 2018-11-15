@@ -1,5 +1,7 @@
 package com.smalik.producer;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.Message;
@@ -13,9 +15,11 @@ public class ProducerController {
 
     private Logger logger = LoggerFactory.getLogger(ProducerController.class);
     private Messaging messaging;
+    private Counter counter;
 
-    public ProducerController(Messaging messaging) {
+    public ProducerController(Messaging messaging, MeterRegistry metrics) {
         this.messaging = messaging;
+        this.counter = metrics.counter("app.person.added");
     }
 
     @PostMapping("/persons")
@@ -24,5 +28,6 @@ public class ProducerController {
 
         Message<PersonAddedEvent> message = MessageBuilder.withPayload(new PersonAddedEvent(person.getName(), person.getAge())).build();
         messaging.getPersonsChannel().send(message);
+        counter.increment();
     }
 }

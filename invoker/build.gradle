@@ -28,6 +28,7 @@ repositories {
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
+//	testCompile project(':producer').sourceSets.test.output
 	testImplementation('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
 }
 

@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EventPersister {
+public class EventPersistor {
 
-    private Logger logger = LoggerFactory.getLogger(EventPersister.class);
+    private Logger logger = LoggerFactory.getLogger(EventPersistor.class);
 
     public void persist(PersonAddedEvent event) {
         logger.info(
