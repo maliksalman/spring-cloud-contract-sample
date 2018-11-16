@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureStubRunner(ids = {"com.smalik.multi-module-gradle-project:producer:+:stubs"}, stubsMode = StubRunnerProperties.StubsMode.LOCAL)
+@AutoConfigureStubRunner(ids = {"com.smalik.multi-module-gradle-project:producer:+:stubs"}, stubsMode = StubRunnerProperties.StubsMode.CLASSPATH)
 public class EventPersistorTest {
 
     @Autowired

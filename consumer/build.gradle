@@ -21,6 +21,9 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+	flatDir {
+		dirs '../producer/build/libs'
+	}
 	mavenCentral()
 	maven { url "https://repo.spring.io/milestone" }
 }
@@ -34,6 +37,7 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
 	testImplementation('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
+	testCompile('com.smalik.multi-module-gradle-project:producer:+:stubs')
 }
 
 dependencyManagement {
@@ -41,4 +45,8 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 		mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:${springCloudContractVersion}"
 	}
+}
+
+compileTestJava {
+	dependsOn(':producer:verifierStubsJar')
 }

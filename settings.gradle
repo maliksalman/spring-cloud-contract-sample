@@ -1,6 +1,6 @@
 rootProject.name = 'multi-module-gradle-project'
 
-include 'consumer'
 include 'producer'
+include 'consumer'
 include 'invoker'
 

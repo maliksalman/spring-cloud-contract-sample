@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = { "producer.base.url=http://localhost:6565" })
-@AutoConfigureStubRunner(ids = {"com.smalik.multi-module-gradle-project:producer:+:stubs:6565"}, stubsMode = StubRunnerProperties.StubsMode.LOCAL)
+@AutoConfigureStubRunner(ids = {"com.smalik.multi-module-gradle-project:producer:+:stubs:6565"}, stubsMode = StubRunnerProperties.StubsMode.CLASSPATH)
 public class InvokerControllerTest {
 
     @Autowired
