@@ -1,34 +1,7 @@
-buildscript {
-	ext {
-		springBootVersion = '2.1.0.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
-}
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-group = 'com.smalik.multi-module-gradle-project'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-
 repositories {
 	flatDir {
 		dirs '../producer/build/libs'
 	}
-	mavenCentral()
-	maven { url "https://repo.spring.io/milestone" }
-}
-
-ext {
-	springCloudVersion = 'Greenwich.M1'
 }
 
 dependencies {
@@ -39,12 +12,12 @@ dependencies {
 	testCompile('com.smalik.multi-module-gradle-project:producer:+:stubs')
 }
 
+compileTestJava {
+	dependsOn(':producer:verifierStubsJar')
+}
+
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
-}
-
-compileTestJava {
-	dependsOn(':producer:verifierStubsJar')
 }

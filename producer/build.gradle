@@ -1,36 +1,4 @@
-buildscript {
-	ext {
-		springBootVersion = '2.1.0.RELEASE'
-		springCloudContractVersion = "2.0.2.RELEASE"
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${springCloudContractVersion}"
-	}
-}
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
 apply plugin: 'spring-cloud-contract'
-
-group = 'com.smalik.multi-module-gradle-project'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-
-repositories {
-	mavenCentral()
-	maven { url "https://repo.spring.io/milestone" }
-}
-
-
-ext {
-	springCloudVersion = 'Greenwich.M1'
-}
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
@@ -41,12 +9,12 @@ dependencies {
 	testImplementation('org.springframework.cloud:spring-cloud-starter-contract-verifier')
 }
 
+contracts {
+	packageWithBaseClasses = 'com.smalik.producer.contracts'
+}
+
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
-}
-
-contracts {
-	packageWithBaseClasses = 'com.smalik.producer.contracts'
 }
