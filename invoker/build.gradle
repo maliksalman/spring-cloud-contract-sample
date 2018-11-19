@@ -1,7 +1,6 @@
 buildscript {
 	ext {
 		springBootVersion = '2.1.0.RELEASE'
-		springCloudContractVersion = "2.0.2.RELEASE"
 	}
 	repositories {
 		mavenCentral()
@@ -25,8 +24,12 @@ repositories {
 		dirs '../producer/build/libs'
 	}
 	mavenCentral()
+	maven { url "https://repo.spring.io/milestone" }
 }
 
+ext {
+	springCloudVersion = 'Greenwich.M1'
+}
 
 dependencies {
 
@@ -38,7 +41,7 @@ dependencies {
 
 dependencyManagement {
 	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:${springCloudContractVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
 

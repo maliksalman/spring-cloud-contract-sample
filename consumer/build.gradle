@@ -1,7 +1,6 @@
 buildscript {
 	ext {
 		springBootVersion = '2.1.0.RELEASE'
-		springCloudContractVersion = "2.0.2.RELEASE"
 	}
 	repositories {
 		mavenCentral()
@@ -43,7 +42,6 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-		mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:${springCloudContractVersion}"
 	}
 }
 
