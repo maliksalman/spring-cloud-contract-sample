@@ -5,19 +5,13 @@ repositories {
 }
 
 dependencies {
-
 	implementation('org.springframework.boot:spring-boot-starter-web')
+	
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
-	testCompile ('com.smalik.multi-module-gradle-project:producer:+:stubs')
+	testImplementation ('com.smalik.multi-module-gradle-project:producer:+:stubs')
 }
 
 compileTestJava {
 	dependsOn(':producer:verifierStubsJar')
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
 }
