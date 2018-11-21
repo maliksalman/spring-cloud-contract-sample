@@ -9,7 +9,7 @@ dependencies {
 	
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
-	testImplementation ('com.smalik.multi-module-gradle-project:producer:+:stubs')
+	testImplementation ('com.smalik.spring-cloud-contract-sample:producer:+:stubs')
 }
 
 compileTestJava {

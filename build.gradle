@@ -1,14 +1,10 @@
 buildscript {
-    ext {
-        springBootVersion = '2.1.0.RELEASE'
-        springCloudContractVersion = "2.0.2.RELEASE"
-    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${springCloudContractVersion}"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.0.RELEASE")
+        classpath("org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.0.2.RELEASE")
     }
 }
 
@@ -18,22 +14,20 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
 
-    group = 'com.smalik.multi-module-gradle-project'
+    group = 'com.smalik.spring-cloud-contract-sample'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = 1.8
 
-    ext {
-        springCloudVersion = 'Greenwich.M1'
-    }
-
     repositories {
         mavenCentral()
-        maven { url "https://repo.spring.io/milestone" }
+        maven {
+            url("https://repo.spring.io/milestone")
+        }
     }
 
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:Greenwich.M1")
         }
     }
 }

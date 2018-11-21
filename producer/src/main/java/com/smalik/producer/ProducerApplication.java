@@ -18,6 +18,6 @@ public class ProducerApplication {
 	@Bean
 	public MeterRegistryCustomizer<MeterRegistry> customizeMetrics() {
 		return registry -> registry.config()
-				.commonTags("env", "dev", "app", "producer");
+				.commonTags("env", "dev", "application", "producer");
 	}
 }

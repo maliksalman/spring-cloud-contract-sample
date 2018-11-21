@@ -19,4 +19,4 @@ management:
   metrics:
     tags:
       env: dev
-      app: consumer
+      application: consumer

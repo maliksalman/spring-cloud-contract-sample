@@ -1,4 +1,4 @@
-rootProject.name = 'multi-module-gradle-project'
+rootProject.name = 'spring-cloud-contract-sample'
 
 include 'producer'
 include 'consumer'
