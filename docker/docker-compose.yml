@@ -1,0 +1,53 @@
+---
+version: "3"
+services:
+
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+    - "5672"
+    - "15672:15672"
+
+  app-invoker:
+    image: openjdk:8-jre-slim
+    entrypoint: ["java", "-jar", "/tmp/app.jar"]
+    environment:
+      PRODUCER_BASE_URL: http://app-producer:8080
+      SERVER_PORT: 8080
+    ports:
+    - "8080:8080"
+    volumes:
+    - "../invoker/build/libs/invoker-0.0.1-SNAPSHOT.jar:/tmp/app.jar"
+
+  app-producer:
+    image: openjdk:8-jre-slim
+    entrypoint: ["java", "-jar", "/tmp/app.jar"]
+    environment:
+      SPRING_RABBITMQ_HOST: rabbit
+      SERVER_PORT: 8080
+    ports:
+      - "7070:8080"
+    volumes:
+      - "../producer/build/libs/producer-0.0.1-SNAPSHOT.jar:/tmp/app.jar"
+
+  app-consumer:
+    image: openjdk:8-jre-slim
+    entrypoint: ["java", "-jar", "/tmp/app.jar"]
+    environment:
+      SPRING_RABBITMQ_HOST: rabbit
+    volumes:
+    - "../consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar:/tmp/app.jar"
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+    - "9090"
+    volumes:
+    - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+    - "3000:3000"
+    volumes:
+    - "./grafana.ini:/etc/grafana/grafana.ini"

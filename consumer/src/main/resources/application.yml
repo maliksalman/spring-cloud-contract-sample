@@ -6,3 +6,17 @@ spring:
           destination: persons.topic
           contentType: application/json
           group: consumer
+
+management:
+
+  endpoints:
+    metrics:
+      enabled: true
+    web:
+      exposure:
+        include: info,health,prometheus
+
+  metrics:
+    tags:
+      env: dev
+      app: consumer

@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableBinding(Messaging.class)
@@ -14,8 +15,9 @@ public class ProducerApplication {
 		SpringApplication.run(ProducerApplication.class, args);
 	}
 
+	@Bean
 	public MeterRegistryCustomizer<MeterRegistry> customizeMetrics() {
 		return registry -> registry.config()
-				.commonTags("region", "us-east", "env", "dev", "app", "foo");
+				.commonTags("env", "dev", "app", "producer");
 	}
 }
