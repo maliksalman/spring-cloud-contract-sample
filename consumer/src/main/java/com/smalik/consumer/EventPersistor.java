@@ -20,9 +20,9 @@ public class EventPersistor {
     private Timer timer;
 
 
-    public EventPersistor(MeterRegistry registry, @Value("${max.persist.duration:1s}") Duration duration) {
+    public EventPersistor(MeterRegistry registry, @Value("${max.persist.duration:2}") long seconds) {
         this.timer = registry.timer("app.person.persisted");
-        this.waitDuration = duration;
+        this.waitDuration = Duration.ofSeconds(seconds);
     }
 
     public void persist(PersonAddedEvent event) {

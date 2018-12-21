@@ -35,6 +35,8 @@ services:
     entrypoint: ["java", "-jar", "/tmp/app.jar"]
     environment:
       SPRING_RABBITMQ_HOST: rabbit
+    ports:
+      - "6060:8080"
     volumes:
     - "../consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar:/tmp/app.jar"
 
