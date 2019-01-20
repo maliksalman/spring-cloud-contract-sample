@@ -6,9 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
 
 @RestController
 public class ProducerController {
@@ -30,4 +33,14 @@ public class ProducerController {
         messaging.getPersonsChannel().send(message);
         counter.increment();
     }
+
+    @GetMapping("/persons/101")
+    public PersonWithDate getPerson() {
+        PersonWithDate p = new PersonWithDate();
+        p.setDate(new Date());
+        p.setAge(35);
+        p.setName("super-man");
+        return p;
+    }
+
 }
