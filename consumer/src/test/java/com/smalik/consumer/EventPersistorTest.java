@@ -33,7 +33,10 @@ public class EventPersistorTest {
         ArgumentCaptor<PersonAddedEvent> eventArgumentCaptor = ArgumentCaptor.forClass(PersonAddedEvent.class);
 
         verify(persister).persist(eventArgumentCaptor.capture());
-        assertEquals("super-man", eventArgumentCaptor.getValue().getName());
-        assertEquals(35, eventArgumentCaptor.getValue().getAge());
+        PersonAddedEvent event = eventArgumentCaptor.getValue();
+
+        assertEquals("Clark Kent", event.getName());
+        assertEquals("Metropolis", event.getCity());
+        assertEquals(35, event.getAge());
     }
 }

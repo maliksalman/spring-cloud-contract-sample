@@ -1,6 +1,5 @@
-package com.smalik.producer.config;
+package com.smalik.producer;
 
-import com.smalik.producer.Messaging;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Configuration;
 

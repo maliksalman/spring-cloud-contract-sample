@@ -1,5 +1,0 @@
-management:
-  metrics:
-    useGlobalRegistry: false
-    enable:
-      all: false

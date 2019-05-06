@@ -8,11 +8,3 @@ spring:
         persons:
           destination: persons.topic
           contentType: application/json
-
-management:
-  endpoints:
-    metrics:
-      enabled: true
-    web:
-      exposure:
-        include: info,health,prometheus

@@ -21,9 +21,9 @@ public abstract class MessagingBase {
 
     public void personAddedIsCalled() {
         Person person = new Person();
-        person.setAge(35);
-        person.setName("Super Man");
-
+        person.setAge(25);
+        person.setName("Peter Parker");
+        person.setCity("New York City");
         controller.addPerson(person);
     }
 }

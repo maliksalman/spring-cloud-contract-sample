@@ -7,6 +7,7 @@ public class PersonAddedEvent {
     private String id;
     private Date addedAt;
     private String name;
+    private String city;
     private int age;
 
     public String getId() {
@@ -39,5 +40,13 @@ public class PersonAddedEvent {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

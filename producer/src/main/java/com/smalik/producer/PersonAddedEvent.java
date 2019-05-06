@@ -8,16 +8,14 @@ public class PersonAddedEvent {
     private String id;
     private Date addedAt;
     private String name;
+    private String city;
     private int age;
 
-    public PersonAddedEvent(String name, int age) {
-        this(UUID.randomUUID().toString(), new Date(), name, age);
-    }
-
-    public PersonAddedEvent(String id, Date addedAt, String name, int age) {
-        this.id = id;
-        this.addedAt = addedAt;
+    public PersonAddedEvent(String name, String city, int age) {
+        this.id = UUID.randomUUID().toString();
+        this.addedAt = new Date();
         this.name = name;
+        this.city = city;
         this.age = age;
     }
 
@@ -35,5 +33,9 @@ public class PersonAddedEvent {
 
     public int getAge() {
         return age;
+    }
+
+    public String getCity() {
+        return city;
     }
 }

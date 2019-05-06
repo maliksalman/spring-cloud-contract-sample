@@ -18,8 +18,8 @@ public class InvokerControllerTest {
     private InvokerController controller;
 
     @Test
-    public void testSomething() {
-        int returnValue = controller.addPerson("Foo Bar", 100);
-        Assert.assertEquals(200, returnValue);
+    public void testCanInvokeTheProducer() {
+        String returnValue = controller.addPerson();
+        Assert.assertEquals("56dbf39c-a7bf-4be2-863a-594baadb243d", returnValue);
     }
 }

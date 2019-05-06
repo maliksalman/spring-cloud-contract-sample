@@ -39,17 +39,3 @@ services:
       - "6060:8080"
     volumes:
     - "../consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar:/tmp/app.jar"
-
-  prometheus:
-    image: prom/prometheus
-    ports:
-    - "9090"
-    volumes:
-    - "./prometheus.yml:/etc/prometheus/prometheus.yml"
-
-  grafana:
-    image: grafana/grafana
-    ports:
-    - "3000:3000"
-    volumes:
-    - "./grafana.ini:/etc/grafana/grafana.ini"
