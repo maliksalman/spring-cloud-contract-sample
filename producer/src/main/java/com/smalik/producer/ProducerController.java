@@ -2,6 +2,7 @@ package com.smalik.producer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class ProducerController {
         this.messaging = messaging;
     }
 
-    @PostMapping("/persons")
+    @PostMapping(value = "/persons", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String addPerson(@RequestBody Person person) {
         logger.info(String.format("Adding person: Name=[%s] City=[%s] Age=[%d]", person.getName(), person.getCity(), person.getAge()));
 
